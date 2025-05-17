@@ -13,3 +13,10 @@ export const formatDateTime = (date) => {
   const [year, time] = yearAndTime.split(', ');
   return `${year}-${month}-${day} (${time.replace(' ', '')})`;
 }
+
+export const maskEmail = (email) => {
+    const [name, domain] = email.split('@');
+    if (name.length <= 3) return email; // if the name part is too short, no need to mask
+    const maskedName = name.slice(0, 3) + '....';
+    return `${maskedName}@${domain}`;
+}

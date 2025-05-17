@@ -45,3 +45,5 @@ D:\Projects\ChatApp\backend\obj\Debug\net9.0\backend.pdb
 D:\Projects\ChatApp\backend\obj\Debug\net9.0\backend.genruntimeconfig.cache
 D:\Projects\ChatApp\backend\obj\Debug\net9.0\ref\backend.dll
 D:\Projects\ChatApp\backend\obj\Debug\net9.0\backend.sourcelink.json
+D:\Projects\ChatApp\backend\bin\Debug\net9.0\DotNetEnv.dll
+D:\Projects\ChatApp\backend\bin\Debug\net9.0\Sprache.dll

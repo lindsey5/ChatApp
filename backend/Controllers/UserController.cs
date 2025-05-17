@@ -36,11 +36,15 @@ namespace backend.Controllers
 
             return Ok(new
             {
-                id = user.Id,
-                email = user.Email,
-                firstname = user.Firstname,
-                lastname = user.Lastname,
-                image = $"data:image/jpeg;base64,{base64Image}"
+                success = true,
+                user = new
+                {
+                    id = user.Id,
+                    email = user.Email,
+                    firstname = user.Firstname,
+                    lastname = user.Lastname,
+                    image = $"data:image/jpeg;base64,{base64Image}"
+                }
             });
         }
 

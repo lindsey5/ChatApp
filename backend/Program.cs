@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 using ProjectAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-
+DotNetEnv.Env.Load();
 var jwtSecret = builder.Configuration["Jwt:Secret"];
 if (string.IsNullOrEmpty(jwtSecret)) throw new InvalidOperationException("JWT Secret is not configured. Please add it to appsettings.json under Jwt:Secret.");
 

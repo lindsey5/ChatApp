@@ -21,7 +21,7 @@ export const UserContextProvider = ({ children }) => {
     useEffect(() => {
         const getUser = async () => {
             const details = await fetchData('/api/user')
-            if(details) setUser(details) 
+            if(details.success) setUser(details.user) 
             else{
                  localStorage.removeItem('token');
                  navigate('/', { replace: true })
