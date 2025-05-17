@@ -47,7 +47,7 @@ namespace backend.Controllers
         [Authorize]
         [HttpGet("users")]
         public async Task<IActionResult> GetAllUsers(string? searchTerm = null)
-        {   
+        {
             var idClaim = User.FindFirst(ClaimTypes.NameIdentifier);
 
             if (idClaim == null || !int.TryParse(idClaim.Value, out int userId))
@@ -56,7 +56,7 @@ namespace backend.Controllers
             var user = await _context.Users.FindAsync(userId);
 
             if (user == null) return NotFound(new { success = false, message = "User not found." });
-            
+
             IQueryable<User> query = _context.Users;
 
             if (!string.IsNullOrWhiteSpace(searchTerm))
@@ -74,6 +74,43 @@ namespace backend.Controllers
             {
                 users,
                 success = true
+            });
+        }
+
+        public class UserUpdateDto
+        {
+            public string Firstname { get; set; } = string.Empty;
+            public string Lastname { get; set; } = string.Empty;
+            public byte[]? Image { get; set; }
+
+        }
+        
+        [Authorize]
+        [HttpPut()]
+        public async Task<IActionResult> UpdateProfile([FromBody] UserUpdateDto userUpdateDto)
+        {
+            var idClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+
+            if (idClaim == null || !int.TryParse(idClaim.Value, out int userId))
+                        return Unauthorized(new { success = false, message = "Invalid user token" });
+
+            var user = await _context.Users.FindAsync(userId);
+
+            if(user == null) return NotFound(new { success = false, message = "User not found."}); 
+
+            user.Firstname = userUpdateDto.Firstname;
+            user.Lastname = userUpdateDto.Lastname;
+
+            if (userUpdateDto.Image != null && userUpdateDto.Image.Length > 0)
+            {
+                user.Image = userUpdateDto.Image;
+            }
+
+            await _context.SaveChangesAsync();
+            
+            return Ok(new { 
+                success = true,
+                user
             });
         }
 

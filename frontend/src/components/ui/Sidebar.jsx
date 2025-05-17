@@ -30,9 +30,9 @@ const Sidebar = () => {
                     src={`data:image/jpeg;base64,${contact.contact_user.image}`}
                     sx={{ width: 60, height: 60 }}
                 />
-                <div className="flex flex-col gap-2">
-                    <h1 className={`text-lg ${isSeen && 'font-bold'}`}>{contact.contact_user.firstname} {contact.contact_user.lastname}</h1>
-                    <p className={`${isSeen && 'font-bold'}`}>{contact.latestMessage.sender == user.id && 'You:' } {contact.latestMessage.content}</p>
+                <div className="w-full flex flex-col gap-2 overflow-hidden">
+                    <h1 className={`truncate text-lg ${isSeen && 'font-bold'}`}>{contact.contact_user.firstname} {contact.contact_user.lastname}</h1>
+                    <p className={`truncate ${isSeen && 'font-bold'}`}>{contact.latestMessage.sender == user.id && 'You:' } {contact.latestMessage.content}</p>
                 </div>
                 {isSeen && <div className="w-[13px] h-[13px] bg-red-500 absolute rounded-full top-1/2 right-5"/>}
                 </div>

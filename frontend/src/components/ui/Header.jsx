@@ -3,10 +3,13 @@ import { UserContext } from "../../contexts/userContext"
 import { Avatar, IconButton } from "@mui/material";
 import AutoComplete from "../AutoComplete";
 import LogoutIcon from '@mui/icons-material/Logout';
+import SettingsIcon from '@mui/icons-material/Settings';
 import { signout } from "../../services/auth";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
     const { user } = useContext(UserContext);
+    const navigate = useNavigate();
 
     const handleSignout = () =>{
         if(confirm("Are you sure you want to log out?")){
@@ -18,6 +21,9 @@ const Header = () => {
         <AutoComplete className="max-w-[500px]" placeholder="Search people" />
         <div className="flex items-center gap-2">
             <Avatar src={user?.image} sx={{ width: 50, height: 50}}/>
+            <IconButton size="large" onClick={() => navigate('/settings')}>
+                <SettingsIcon fontSize="inherit"/>
+            </IconButton>
             <IconButton size="large" onClick={handleSignout}>
                 <LogoutIcon fontSize="inherit"/>
             </IconButton>

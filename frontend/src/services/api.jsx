@@ -27,7 +27,7 @@ export const postData = async (endpoint, data) => {
     });
     return response.data;
   } catch (error) {
-    return error.response
+    return error.response.data
   }
 };
 

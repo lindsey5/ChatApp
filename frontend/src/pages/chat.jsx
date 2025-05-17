@@ -68,8 +68,12 @@ const Chat = () => {
             {messages && messages.map((message, index) => <div 
                 ref={index === messages.length -1 ? bottomRef : undefined} 
                 key={index} 
-                className={`flex w-full mt-10 ${message.sender === user.id ? 'justify-end' : 'justify-start'}`}
+                className={`gap-3 flex w-full mt-10 ${message.sender === user?.id ? 'justify-end' : 'justify-start'}`}
             >
+                {message.sender !== user.id && <Avatar 
+                    src={`data:image/jpeg;base64,${contact?.image}`} 
+                    sx={{ width: 50, height: 50}}
+                />}
                 <div>
                     <div className={`rounded-lg ${message.sender === user.id ? 'bg-[#1c18fa] text-white' : 'bg-gray-300'} p-5`}>
                         <p className="text-lg">{message.content}</p>
