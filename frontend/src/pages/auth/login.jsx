@@ -35,7 +35,9 @@ const LoginPage = () => {
     
 
     return <main className="bg-[url(bg.jpg)] bg-cover bg-center h-screen flex justify-center items-center">
-        <form onSubmit={handleLogin} className="max-w-[500px] w-[90%] bg-white shadow-xl rounded-xl border-1 border-gray-100 p-10">
+        <form onSubmit={handleLogin} className="md:grid md:grid-cols-[2fr_1.5fr] flex justify-center items-center w-[80%]">
+            <img className="md:block hidden h-full"  src="/illustration.png"/>
+            <div className="w-full h-full shadow-xl bg-white rounded-xl border-1 border-gray-200 p-10">
                 <h1 className="font-bold text-3xl">Login</h1>
                 <div className='flex flex-col gap-10 my-10'>
                     <p className='text-red-600'>{error}</p>
@@ -57,6 +59,7 @@ const LoginPage = () => {
                         variant='contained' 
                         sx={{ height: 45}}
                     >Login</Button>
+                </div>
                 <p className='text-center'>Don't have an account? <a className="underline text-blue-500" href="/signup">Signup</a></p>
             </div>
         </form>
