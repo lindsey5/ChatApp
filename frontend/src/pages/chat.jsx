@@ -60,7 +60,7 @@ const Chat = () => {
     }, [messages]);
 
     return <main className="h-[87%] flex flex-col">
-        <div className="flex flex-col flex-grow p-10 min-h-0 overflow-y-auto">
+        <div className="bg-[url(bg.jpg)] bg-cover bg-center flex flex-col flex-grow p-10 min-h-0 overflow-y-auto">
             {contact && <div className="w-full flex flex-col justify-center items-center gap-5">
                 <Avatar src={`data:image/jpeg;base64,${contact?.image}`} sx={{ width: 80, height: 80}}/>
                 <h1 className="font-bold text-2xl">{contact?.firstname} {contact?.lastname}</h1>
@@ -75,7 +75,7 @@ const Chat = () => {
                     sx={{ width: 50, height: 50}}
                 />}
                 <div>
-                    <div className={`rounded-lg ${message.sender === user.id ? 'bg-[#1c18fa] text-white' : 'bg-gray-300'} p-5`}>
+                    <div className={`rounded-lg ${message.sender === user.id ? 'bg-[#1c18fa] text-white' : 'bg-white border-1 border-gray-100'} p-5`}>
                         <p className="text-lg">{message.content}</p>
                     </div>
                     <p className="text-sm mt-1">{formatDateTime(message.date_time)}</p>

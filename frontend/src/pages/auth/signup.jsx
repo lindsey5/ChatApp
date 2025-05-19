@@ -51,8 +51,8 @@ const Signup = () => {
         setLoading(false)
     }
 
-    return <main className="h-screen flex justify-center items-center">
-            <form onSubmit={handleSubmit} className="max-w-[500px] shadow-xl rounded-xl border-1 border-gray-100 p-10">
+    return <main className="bg-[url(bg.jpg)] bg-cover bg-center h-screen flex justify-center items-center">
+            <form onSubmit={handleSubmit} className="bg-white max-w-[500px] shadow-xl rounded-xl border-1 border-gray-100 p-10">
                 {!verificationCode ? <>
                 <h1 className="font-bold text-3xl">Signup</h1>
                 <div className='flex flex-col gap-10 my-5'>

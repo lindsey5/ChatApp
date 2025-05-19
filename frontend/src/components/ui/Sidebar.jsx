@@ -1,11 +1,12 @@
 import { useContext } from "react"
 import { UserContext } from "../../contexts/userContext"
-import { Avatar } from "@mui/material";
+import { Avatar, IconButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { updateData } from "../../services/api";
 import ChatbotButton from "../../pages/chatbot/ChatbotButton";
+import CloseIcon from '@mui/icons-material/Close';
 
-const Sidebar = () => {
+const Sidebar = ({ close }) => {
     const { contacts, user, loadContacts } = useContext(UserContext);
     const navigate = useNavigate();
 
@@ -15,8 +16,13 @@ const Sidebar = () => {
         loadContacts();
     }
 
-    return <aside className="relative h-full w-[300px] py-10 border-r-1 border-gray-300 flex flex-col gap-5">
-        <h1 className="ml-5 font-bold text-3xl">Contacts</h1>
+    return <aside className="z-10 fixed left-0 inset-y-0 bg-white w-[300px] py-10 border-r-1 border-gray-300 flex flex-col gap-5">
+        <div className="flex items-center justify-between">
+            <h1 className="ml-5 font-bold text-3xl">Messages</h1>
+            <IconButton size="large" onClick={close}>
+                <CloseIcon fontSize="inherit"/>
+            </IconButton>
+        </div>
         <div className="flex-grow min-h-0 overflow-y-auto">
             {contacts.map(contact => {
                 const isSeen = contact.latestMessage.receiver === user.id && !contact.latestMessage.is_seen

@@ -11,12 +11,9 @@ const UserLayout = () => {
     
     return <UserContextProvider>    
             <SignalContextProvider>
-                <div className="grid grid-cols-[300px_1fr] h-screen flex">
-                    <Sidebar />
-                    <div className="h-screen">
-                        <Header />
-                        <Outlet />
-                    </div>
+                <div className="h-screen">
+                    <Header />
+                    <Outlet />
                 </div>
             </SignalContextProvider>
         </UserContextProvider>

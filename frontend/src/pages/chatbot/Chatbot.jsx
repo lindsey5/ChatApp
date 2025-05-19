@@ -138,7 +138,7 @@ const Chatbot = () => {
 
     return (
         <main className="h-[87%] flex flex-col">
-            <div className='flex flex-col flex-grow p-10 min-h-0 overflow-y-auto'>
+            <div className='bg-[url(bg.jpg)] bg-cover bg-center flex flex-col flex-grow p-10 min-h-0 overflow-y-auto'>
                 <div className="w-full flex flex-col justify-center items-center gap-5 mt-10">
                     <div className='p-2 rounded-full shadow-lg shadow-[#1c18fa]'>
                         <Avatar src='robot.png' sx={{ width: 80, height: 80}}/>
@@ -147,7 +147,7 @@ const Chatbot = () => {
                 {chats.map((chat, index) => (
                     <div key={index} ref={index === chats.length - 1 ? bottomRef : undefined} className={`flex w-full mt-10 ${chat.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
                         <div className='max-w-1/2'>
-                            <div className={`break-words rounded-lg ${chat.sender === 'user' ? 'bg-[#1c18fa] text-white' : 'bg-gray-300'} p-5`}>
+                            <div className={`break-words rounded-lg ${chat.sender === 'user' ? 'bg-[#1c18fa] text-white' : 'bg-white border-1 border-gray-100'} p-5`}>
                                 {chat.type === 'audio' ? <audio controls src={chat.message} className="mt-4"></audio> : chat.message}
                             </div>
                         </div>
